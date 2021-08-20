@@ -1,4 +1,4 @@
-on: pull_request
+# on: pull_request
 
 jobs:
   check_files:
@@ -9,4 +9,3 @@ jobs:
           fetch-depth: 0
       - name: Check files for compliance
         run: .github/workflows/scripts/check-files.sh
-

@@ -1,13 +1,13 @@
 name: CI
 
 # Controls when the action will run.
-on:
-  # Triggers the workflow on push to master (including merged PRs)
-  push:
-    branches: [ master ]
+# on:
+#   # Triggers the workflow on push to master (including merged PRs)
+#   push:
+#     branches: [ master ]
 
-  # Allows you to run this workflow manually from the Actions tab
-  workflow_dispatch:
+#   # Allows you to run this workflow manually from the Actions tab
+#   workflow_dispatch:
 
 # A workflow run is made up of one or more jobs that can run sequentially or in parallel
 jobs:
@@ -18,16 +18,16 @@ jobs:
 
     # Steps represent a sequence of tasks that will be executed as part of the job
     steps:
-    - name: Updating website.
-      uses: appleboy/ssh-action@master
-      with:
-        host: based.cooking
-        username: based
-        key: ${{ secrets.based_ssh }}
-        passphrase: ${{ secrets.based_ssh_pass }}
-        port: ${{ secrets.based_port }}
-        script: |
-          cd repo
-          git stash
-          git pull --force origin master
-          make deploy
+      - name: Updating website.
+        uses: appleboy/ssh-action@master
+        with:
+          host: based.cooking
+          username: based
+          key: ${{ secrets.based_ssh }}
+          passphrase: ${{ secrets.based_ssh_pass }}
+          port: ${{ secrets.based_port }}
+          script: |
+            cd repo
+            git stash
+            git pull --force origin master
+            make deploy
